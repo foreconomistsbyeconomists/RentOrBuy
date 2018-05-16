@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="..\static\styles.css">
+</head>
+
+<!-- <script src="..\js\angular.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+
+<body style="margin:30px;padding:0px" >
+<div style="text-align: center;"><IMG SRC="C:\Users\jocopp\Desktop\Desktop Copy\RentOrBuy\images\RentOrBuy.png" ALT="image"></div>
+
+<H1>Enter the following information about your purchase decision</H1>
+<br>
+<h2> Home Information</h2>
+
+<div class="slidecontainer">
+<p>Price: $<span id="homeprice"></span></p>
+  <input type="range" min="0" max="1000000" step="2000" value="500000" class="slider" id="slide_hp">
+</div>
+
+<div class="slidecontainer">
+<p>Down Payment: <span id="downpayment"></span>%</p>
+  <input type="range" min="0" max="30" step="1" value="20" class="slider" id="slide_dp">
+</div>
+
+<div class="slidecontainer">
+<p> Interest Rate: <span id="mortgagerate"></span>%</p>
+  <input type="range" min="0" max="20" step=".01" value="4.5" class="slider" id="slide_mr">
+</div>
+
+<div class="slidecontainer">
+<p> Mortgage Length: <span id="mortgagelength"></span>&nbspYears</p>
+  <input type="range" min="10" max="30" step="5" value="30" class="slider" id="slide_ml">
+</div>
+
+<h2>Taxes</h2>
+
+<script>
+function slide_val(slide_in, var_out) {
+var slider = document.getElementById(slide_in);
+var output = document.getElementById(var_out);
+output.innerHTML = slider.value;
+slider.oninput = function() {output.innerHTML = this.value;}
+}
+slide_val("slide_hp", "homeprice")
+slide_val("slide_dp", "downpayment")
+slide_val("slide_mr", "mortgagerate")
+slide_val("slide_ml", "mortgagelength")
+</script>
+
+<!-- <script>
+var slider = document.getElementById("slide_hp");
+var output = document.getElementById("homeprice");
+output.innerHTML = slider.value;
+slider.oninput = function() {output.innerHTML = this.value;}
+var slider2 = document.getElementById("slide_dp");
+var output2 = document.getElementById("downpayment");
+output2.innerHTML = slider2.value;
+slider2.oninput = function() {output2.innerHTML = this.value;}
+var slider3 = document.getElementById("slide_mr");
+var output3 = document.getElementById("mortgagerate");
+output3.innerHTML = slider3.value;
+slider3.oninput = function() {output3.innerHTML = this.value;}
+</script>
+ -->
+
+
+<FORM action= 'localhost:8001/result' METHOD="POST" class="content">
+<H1>Enter the following information about your rental decision</H1>
+  Last name:<br>
+  <input type="text" name="lastname" id="lastname"><br>
+  Organization:<br>
+  <input type="text" name="organization" id="organization"><br>
+  Phone:<br>
+  <input type="text" name="phone" id="phone"><br>
+  Email:<br>
+  <input type="email" name="email" id="email"><br>
+
+<BR>
+
+<INPUT TYPE="SUBMIT" VALUE="Calculate Rent or Buy" />
+
+</FORM>
+
+</BODY>
+</HTML>
