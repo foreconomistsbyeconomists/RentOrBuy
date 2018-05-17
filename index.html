@@ -12,8 +12,6 @@
 <!-- <script src="..\js\angular.min.js"></script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-<!--style="margin:30px;padding:0px"-->
-
 <body>
 <div style="text-align: center;">
   <picture>
@@ -24,9 +22,7 @@
   </picture>
 </div>
 
-<H1>Enter the following information about your purchase decision</H1>
-<br>
-<h2> Home Information</h2>
+<h2>Purchase</h2>
 
 <div class="slidecontainer">
 <p>Price: $<span id="homeprice"></span></p>
@@ -48,7 +44,67 @@
   <input type="range" min="10" max="30" step="5" value="30" class="slider" id="slide_ml">
 </div>
 
-<h2>Taxes</h2>
+<div class="slidecontainer">
+<p> Buying Closing Costs: <span id="buycosts"></span>%</p>
+  <input type="range" min="0" max="20" step=".01" value="4.5" class="slider" id="slide_buyc">
+</div>
+
+<div class="slidecontainer">
+<p> Selling Closing Costs: <span id="sellcosts"></span>%</p>
+  <input type="range" min="0" max="20" step=".01" value="4.5" class="slider" id="slide_sellc">
+</div>
+
+<div class="slidecontainer">
+<p>Property Taxes: <span id="propertytax">%</span></p>
+  <input type="range" min="0" max="10" step=".1" value="5" class="slider" id="slide_pt">
+</div>
+
+<div class="slidecontainer">
+<p>Marginal Tax Rate: <span id="marginaltaxrate"></span>%</p>
+  <input type="range" min="0" max="50" step="1" value="25" class="slider" id="slide_mtr">
+</div>
+
+<div class="slidecontainer">
+<p> Maintenance: <span id="maintenance"></span>%</p>
+  <input type="range" min="0" max="20" step=".01" value="4.5" class="slider" id="slide_main">
+</div>
+
+<div class="slidecontainer">
+<p> Insurance: <span id="insurance"></span>%</p>
+  <input type="range" min="0" max="20" step=".01" value="4.5" class="slider" id="slide_insure">
+</div>
+
+<div class="slidecontainer">
+<p> Utilities: $<span id="utilities"></span></p>
+  <input type="range" min="0" max="1000" step="50" value="500" class="slider" id="slide_util">
+</div>
+
+<div class="slidecontainer">
+<p> Fees: $<span id="fees"></span></p>
+  <input type="range" min="0" max="3000" step="100" value="1000" class="slider" id="slide_fee">
+</div>
+
+<h2>Rental</h2>
+
+<div class="slidecontainer">
+<p>Monthly Rent: $<span id="rent"></span></p>
+  <input type="range" min="0" max="10000" step="100" value="3000" class="slider" id="slide_rent">
+</div>
+
+<div class="slidecontainer">
+<p>Deposit: $<span id="deposit"></span></p>
+  <input type="range" min="0" max="10000" step="100" value="3000" class="slider" id="slide_deposit">
+</div>
+
+<div class="slidecontainer">
+<p>Brokers Fee: $<span id="brokerfee"></span></p>
+  <input type="range" min="0" max="10000" step="100" value="1000" class="slider" id="slide_broker">
+</div>
+
+<div class="slidecontainer">
+<p> Rental Insurance: <span id="insurance_rental"></span>%</p>
+  <input type="range" min="0" max="20" step=".01" value="4.5" class="slider" id="slide_insure_rent">
+</div>
 
 <script>
 function slide_val(slide_in, var_out) {
@@ -61,41 +117,20 @@ slide_val("slide_hp", "homeprice")
 slide_val("slide_dp", "downpayment")
 slide_val("slide_mr", "mortgagerate")
 slide_val("slide_ml", "mortgagelength")
+slide_val("slide_buyc", "buycosts")
+slide_val("slide_sellc", "sellcosts")
+slide_val("slide_pt", "propertytax")
+slide_val("slide_mtr", "marginaltaxrate")
+slide_val("slide_main", "maintenance")
+slide_val("slide_insure", "insurance")
+slide_val("slide_util", "utilities")
+slide_val("slide_fee", "fees")
+slide_val("slide_rent", "rent")
+slide_val("slide_deposit", "deposit")
+slide_val("slide_broker", "brokerfee")
+slide_val("slide_insure_rent", "insurance_rental")
 </script>
 
-<!-- <script>
-var slider = document.getElementById("slide_hp");
-var output = document.getElementById("homeprice");
-output.innerHTML = slider.value;
-slider.oninput = function() {output.innerHTML = this.value;}
-var slider2 = document.getElementById("slide_dp");
-var output2 = document.getElementById("downpayment");
-output2.innerHTML = slider2.value;
-slider2.oninput = function() {output2.innerHTML = this.value;}
-var slider3 = document.getElementById("slide_mr");
-var output3 = document.getElementById("mortgagerate");
-output3.innerHTML = slider3.value;
-slider3.oninput = function() {output3.innerHTML = this.value;}
-</script>
- -->
-
-
-<FORM action= 'localhost:8001/result' METHOD="POST" class="content">
-<H1>Enter the following information about your rental decision</H1>
-  Last name:<br>
-  <input type="text" name="lastname" id="lastname"><br>
-  Organization:<br>
-  <input type="text" name="organization" id="organization"><br>
-  Phone:<br>
-  <input type="text" name="phone" id="phone"><br>
-  Email:<br>
-  <input type="email" name="email" id="email"><br>
-
-<BR>
-
-<INPUT TYPE="SUBMIT" VALUE="Calculate Rent or Buy" />
-
-</FORM>
 
 </BODY>
 </HTML>
